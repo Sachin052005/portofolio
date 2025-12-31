@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects | Sachin A R</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #020617;
+            color: #e5e7eb;
+            min-height: 100vh;
+        }
+
+        /* ================= NAVBAR ================= */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(2,6,23,0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            z-index: 1000;
+        }
+
+        .navbar h2 {
+            color: #38bdf8;
+            margin-right: auto;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar ul li a {
+            color: #cbd5f5;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .navbar ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            transition: 0.4s;
+        }
+
+        .navbar ul li a:hover::after,
+        .navbar ul li a.active::after {
+            width: 100%;
+        }
+
+        /* ================= CONTENT WRAPPER ================= */
+        .projects-wrapper {
+            padding: 120px 80px 80px;
+            display: flex;
+            justify-content: center;
+            animation: slideUp 1.2s ease forwards;
+            opacity: 0;
+        }
+
+        .projects-card {
+            width: 90%;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(14px);
+            border-radius: 20px;
+            padding: 50px;
+        }
+
+        .page-title h1 {
+            color: #38bdf8;
+            font-size: 2.8rem;
+        }
+
+        .page-title p {
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        /* ================= PROJECT GRID ================= */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            position: relative;
+            height: 240px;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(2,6,23,0.55);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-title {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 10px 14px;
+            background: rgba(56,189,248,0.25);
+            backdrop-filter: blur(8px);
+            border-left: 3px solid #38bdf8;
+            border-top: 3px solid #38bdf8;
+            border-radius: 12px 0 12px 0;
+            font-weight: 600;
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .project-desc {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            max-width: 70%;
+            padding: 12px 14px;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(8px);
+            border-right: 3px solid #38bdf8;
+            border-bottom: 3px solid #38bdf8;
+            border-radius: 0 12px 0 12px;
+            font-size: 0.9rem;
+            color: #cbd5f5;
+            transform: translateX(20px);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .project-card:hover .project-title,
+        .project-card:hover .project-desc {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* ================= TABLET ================= */
+        @media (max-width: 1000px) {
+            .projects-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+            .projects-wrapper {
+                padding: 120px 40px 80px;
+            }
+        }
+
+        /* ================= MOBILE ================= */
+        @media (max-width: 650px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .navbar ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .projects-wrapper {
+                padding: 170px 20px 60px;
+            }
+
+            .projects-card {
+                padding: 30px 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-desc {
+                max-width: 85%;
+                font-size: 0.85rem;
+            }
+
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>Sachin</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
+
+<div class="projects-wrapper">
+    <div class="projects-card">
+
+        <div class="page-title">
+            <h1>Projects</h1>
+            <p>My Works</p>
+        </div>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <img src="assets/images/Deepfake_Detection_.png" alt="Deepfake Detection">
+                <div class="project-overlay"></div>
+                <div class="project-title">Deepfake Detection System</div>
+                <div class="project-desc">
+                    A multimodal system that detects deepfake videos and audio with high accuracy, secured using blockchain for data integrity.
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/images/E-commerce.png" alt="E-commerce Store">
+                <div class="project-overlay"></div>
+                <div class="project-title">E-commerce Grocery Store</div>
+                <div class="project-desc">
+                    A full-featured grocery platform with user-friendly browsing, reviews, order tracking, and admin dashboard.
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/images/Uzhavar Choice.png" alt="Uzhavar Choice">
+                <div class="project-overlay"></div>
+                <div class="project-title">Uzhavar Choice – Agri Platform</div>
+                <div class="project-desc">
+                    Farmer-centric platform for agricultural products and WhatsApp-based purchase inquiries.
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/images/Farmer.png" alt="Farmer Management">
+                <div class="project-overlay"></div>
+                <div class="project-title">Farmer Data Management System</div>
+                <div class="project-desc">
+                    Easy farmer data entry, location tracking, and efficient record management.
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/images/Vehicle.png" alt="Vehicle Management">
+                <div class="project-overlay"></div>
+                <div class="project-title">Vehicle Management System</div>
+                <div class="project-desc">
+                    A user-friendly system to manage and search vehicles with CRUD functionality.
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/images/Tips.png" alt="Tips Calculator">
+                <div class="project-overlay"></div>
+                <div class="project-title">Tips Calculator</div>
+                <div class="project-desc">
+                    A sleek calculator to effortlessly compute tips for any dining scenario.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

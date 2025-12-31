@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Sachin A R</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #020617;
+            color: #e5e7eb;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(2,6,23,0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            z-index: 1000;
+        }
+
+        .navbar h2 {
+            color: #38bdf8;
+            margin-right: auto;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar ul li a {
+            color: #cbd5f5;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .navbar ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            transition: 0.4s;
+        }
+
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* PAGE WRAPPER */
+        .about-wrapper {
+            padding: 120px 0 80px 0;
+            display: flex;
+            justify-content: center;
+            animation: slideUp 1.2s ease forwards;
+            opacity: 0;
+        }
+
+        .about-card {
+            width: 88%;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(14px);
+            border-radius: 20px;
+            padding: 50px;
+        }
+
+        .about-title h1 {
+            color: #38bdf8;
+            font-size: 2.8rem;
+        }
+
+        .about-title p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        /* CONTENT + IMAGE */
+        .about-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .role {
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-grid span {
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .objective {
+            line-height: 1.7;
+            color: #cbd5f5;
+        }
+
+        .profile-img {
+            width: 100%;
+            border-radius: 18px;
+            border: 3px solid rgba(56,189,248,0.4);
+        }
+
+        .section-title {
+            margin-top: 50px;
+            font-size: 1.4rem;
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
+
+        /* SKILLS ANIMATION */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 20px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            background: #38bdf8;
+            border-radius: 10px;
+            width: 0; /* Start at 0 for animation */
+            animation: fillBar 2s cubic-bezier(0.1, 1, 0.1, 1) forwards;
+            animation-delay: 0.5s; /* Wait for page fade-in */
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
+            to { width: var(--target-width); }
+        }
+
+        /* INTERESTS */
+        .interests {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .interest {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: rgba(56,189,248,0.15);
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .interest i { color: #38bdf8; }
+
+        @keyframes slideUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .navbar { padding: 0 40px; }
+            .about-main { grid-template-columns: 1fr; }
+            .interests { grid-template-columns: repeat(2,1fr); }
+        }
+
+        @media (max-width: 500px) {
+            .navbar { padding: 0 20px; }
+            .about-card { padding: 30px 20px; }
+            .about-title h1 { font-size: 2.2rem; }
+            .info-grid, .skills-grid, .interests { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>Sachin</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
+
+<div class="about-wrapper">
+    <div class="about-card">
+
+        <div class="about-title">
+            <h1>About</h1>
+            <p>Learn more about me</p>
+        </div>
+
+        <div class="about-main">
+            <div>
+                <h4 class="role">Software Developer</h4>
+                <p class="subtitle">Passionate Software Designer and Developer</p>
+
+                <div class="info-grid">
+                    <div><span>Birthday:</span> 05 May 2005</div>
+                    <div><span>Phone:</span> +91 9344358554</div>
+                    <div><span>City:</span> Tamil Nadu, India</div>
+                    <div><span>Age:</span> 21</div>
+                    <div><span>Degree:</span> Bachelors</div>
+                    <div><span>Email:</span> idpsachin@gmail.com</div>
+                </div>
+
+                <p class="objective">
+                    I am a passionate software developer with a strong interest in problem-solving and building efficient, user-focused applications. I enjoy working on innovative projects and collaborating in dynamic environments.
+                </p>
+            </div>
+            <img src="assets/images/photo.jpeg" class="profile-img">
+        </div>
+
+        <h3 class="section-title">Skills</h3>
+        <div class="skills-grid">
+            <div><div class="skill-name">Java <span>80%</span></div><div class="bar"><div class="fill" style="--target-width: 80%"></div></div></div>
+            <div><div class="skill-name">Python <span>75%</span></div><div class="bar"><div class="fill" style="--target-width: 75%"></div></div></div>
+            <div><div class="skill-name">C <span>70%</span></div><div class="bar"><div class="fill" style="--target-width: 70%"></div></div></div>
+            <div><div class="skill-name">HTML <span>85%</span></div><div class="bar"><div class="fill" style="--target-width: 85%"></div></div></div>
+            <div><div class="skill-name">CSS <span>85%</span></div><div class="bar"><div class="fill" style="--target-width: 85%"></div></div></div>
+            <div><div class="skill-name">JavaScript <span>70%</span></div><div class="bar"><div class="fill" style="--target-width: 70%"></div></div></div>
+            <div><div class="skill-name">SQL <span>75%</span></div><div class="bar"><div class="fill" style="--target-width: 75%"></div></div></div>
+        </div>
+
+        <h3 class="section-title">Interests</h3>
+        <div class="interests">
+            <div class="interest"><i class="fas fa-code"></i> Competitive Programming</div>
+            <div class="interest"><i class="fas fa-layer-group"></i> DBMS</div>
+            <div class="interest"><i class="fas fa-paint-brush"></i> UI Designing</div>
+            <div class="interest"><i class="fas fa-desktop"></i> Front-End Development</div>
+            <div class="interest"><i class="fas fa-robot"></i> Automation</div>
+            <div class="interest"><i class="fas fa-vial"></i> Testing</div>
+            <div class="interest"><i class="fas fa-project-diagram"></i> Dynamic Programming</div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
