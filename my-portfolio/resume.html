@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume | Sachin A R</title>
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         * {
@@ -22,7 +21,7 @@
             min-height: 100vh;
         }
 
-        /* NAVBAR */
+        /* ================= NAVBAR (Updated Design) ================= */
         .navbar {
             position: fixed;
             top: 0;
@@ -32,31 +31,28 @@
             backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
-            padding: 0 60px;
+            padding: 0 80px;
             z-index: 1000;
         }
 
         .navbar h2 {
             color: #38bdf8;
+            margin-right: auto;
         }
 
-        .nav-links {
-            margin-left: auto;
-        }
-
-        .nav-links ul {
+        .navbar ul {
             list-style: none;
             display: flex;
             gap: 25px;
         }
 
-        .nav-links ul li a {
+        .navbar ul li a {
             color: #cbd5f5;
             text-decoration: none;
             position: relative;
         }
 
-        .nav-links ul li a::after {
+        .navbar ul li a::after {
             content: "";
             position: absolute;
             left: 0;
@@ -67,25 +63,12 @@
             transition: 0.4s;
         }
 
-        .nav-links ul li a:hover::after,
-        .nav-links ul li a.active::after {
+        .navbar ul li a:hover::after,
+        .navbar ul li a.active::after {
             width: 100%;
         }
 
-        /* HAMBURGER */
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            color: #38bdf8;
-            cursor: pointer;
-            margin-left: auto;
-        }
-
-        #menu-checkbox {
-            display: none;
-        }
-
-        /* CONTENT */
+        /* ================= CONTENT WRAPPER ================= */
         .resume-wrapper {
             padding: 120px 80px 80px;
             display: flex;
@@ -107,7 +90,7 @@
         }
 
         h1 {
-            font-size: 2.6rem;
+            font-size: 2.8rem; /* Matched to projects page */
             margin-bottom: 10px;
         }
 
@@ -127,19 +110,18 @@
             line-height: 1.6;
         }
 
-        /* TWO COLUMN */
+        /* TWO COLUMN LAYOUT */
         .columns {
             display: flex;
             gap: 50px;
         }
 
-        .left-column,
-        .right-column {
+        .left-column, .right-column {
             flex: 1;
             position: relative;
         }
 
-        /* TIMELINE */
+        /* TIMELINE DESIGN */
         .timeline {
             position: relative;
             margin-top: 20px;
@@ -148,95 +130,60 @@
         .timeline::before {
             content: "";
             position: absolute;
-            left: 7%;
+            left: 0;
             top: 0;
             bottom: 0;
-            width: 3px;
+            width: 2px;
             background: #38bdf8;
         }
 
         .timeline-item {
             position: relative;
-            padding-left: 60px;
+            padding-left: 30px;
             margin-bottom: 45px;
         }
 
         .timeline-item::before {
             content: "";
             position: absolute;
-            left: 7%;
+            left: -6px;
             top: 8px;
             width: 14px;
             height: 14px;
             border-radius: 50%;
             background: #38bdf8;
-            transform: translateX(-50%);
+            border: 3px solid #020617;
         }
 
         @keyframes slideUp {
-            from {
-                transform: translateY(60px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        /* MOBILE VIEW */
+        /* ================= RESPONSIVE DESIGN ================= */
         @media (max-width: 900px) {
+            .navbar { padding: 0 40px; }
+            .columns { flex-direction: column; gap: 0; }
+            .resume-wrapper { padding: 120px 40px 80px; }
+        }
 
+        @media (max-width: 650px) {
             .navbar {
-                padding: 0 30px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: #020617;
-                display: none;
-            }
-
-            .nav-links ul {
                 flex-direction: column;
-                padding: 20px;
+                height: auto;
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .navbar ul {
+                flex-wrap: wrap;
+                justify-content: center;
                 gap: 15px;
             }
 
-            #menu-checkbox:checked + .menu-toggle + .nav-links {
-                display: block;
-            }
-
-            .resume-wrapper {
-                padding: 120px 25px 60px;
-            }
-
-            .columns {
-                flex-direction: column;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                padding-left: 50px;
-            }
-
-            .timeline-item::before {
-                left: 20px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
+            .resume-wrapper { padding: 170px 20px 60px; }
+            .resume-card { padding: 30px 20px; }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -245,80 +192,65 @@
 
 <div class="navbar">
     <h2>Sachin</h2>
-
-    <input type="checkbox" id="menu-checkbox">
-    <label for="menu-checkbox" class="menu-toggle">
-        <i class="fas fa-bars"></i>
-    </label>
-
-    <div class="nav-links">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="resume.html" class="active">Resume</a></li>
-            <li><a href="certifications.html">Certifications</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html" class="active">Resume</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
 </div>
 
 <div class="resume-wrapper">
     <div class="resume-card">
 
         <h1>Resume</h1>
-        <p>Check My Resume</p>
+        <p style="color: #94a3b8; margin-bottom: 40px;">Check My Professional Path</p>
 
         <div class="columns">
 
             <div class="left-column">
                 <div class="timeline">
-
                     <div class="timeline-item">
                         <h2>Career Objective</h2>
                         <p>
-                            To apply my coding and problem-solving skills as a software developer
-                            while contributing to impactful projects and continuously improving
+                            To apply my coding and problem-solving skills as a software developer 
+                            while contributing to impactful projects and continuously improving 
                             my technical expertise.
                         </p>
                     </div>
 
                     <div class="timeline-item">
                         <h2>Education</h2>
-
                         <h3>Bachelor of Computer Science and Business Systems</h3>
                         <p>June 2022 – Present | CGPA: 8.11 (Till 6th Sem)</p>
-
+                        
                         <br>
-
+                        
                         <h3>St Mary's Matriculation School, Idappadi</h3>
                         <p>2019 – 2020 | 64%</p>
-
+                        
                         <br>
-
+                        
                         <h3>Wisdom Matriculation Higher Secondary School, Idappadi</h3>
                         <p>2021 – 2022 | 73%</p>
                     </div>
-
                 </div>
             </div>
 
             <div class="right-column">
                 <div class="timeline">
-
                     <div class="timeline-item">
                         <h2>Professional Experience</h2>
-
                         <h3>Web Development Intern | Ether Services Pvt Ltd</h3>
                         <p>Jul 2024 – Sep 2024 | Coimbatore, Tamil Nadu</p>
-
                         <p>
-                            Gained hands-on experience in front-end and back-end web development,
-                            database management, and performance optimization. Collaborated with
+                            Gained hands-on experience in front-end and back-end web development, 
+                            database management, and performance optimization. Collaborated with 
                             the team to improve UI and overall application efficiency.
                         </p>
                     </div>
-
                 </div>
             </div>
 
